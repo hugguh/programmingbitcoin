@@ -1,36 +1,38 @@
 [[chapter_finite_fields]]
 [role="pagenumrestart"]
-== Finite Fields
+== Finite Fields/ Конечные поля
 
 [.lead]
-One of the most difficult things about learning how to program Bitcoin is knowing where to start.
-There are so many components that depend on each other that learning one thing may lead you to have to learn another, which in turn may lead you to need to learn something else before you can understand the original thing.
 
-This((("Bitcoin", "overview of components")))((("elliptic curve cryptography", "role in Bitcoin")))((("signing and verification", "purpose of")))((("transactions", "role in Bitcoin"))) chapter is going to get you off to a more manageable start.
-It may seem strange, but we'll start with the basic math that you need to understand elliptic curve cryptography.
-Elliptic curve cryptography, in turn, gives us the signing and verification algorithms.
-These are at the heart of how transactions work, and transactions are the atomic unit of value transfer in Bitcoin.
-By learning about finite fields((("finite fields", "role in Bitcoin")))((("elliptic curves", "role in Bitcoin"))) and elliptic curves first, you'll get a firm grasp of concepts that you'll need to progress logically.
 
-Be aware that this chapter and the next two chapters may feel a bit like you're eating vegetables, especially if you haven't done formal math in a long time.
-I would encourage you to get through them, though, as the concepts and code presented here will be used throughout the book.
+Одной из самых сложных вещей в изучении программирования Биткойн является понимание того, с чего начать.
+Существует так много компонентов, которые зависят друг от друга, что изучение одного может привести к тому, что вам придется изучать другой, что, в свою очередь, может привести к необходимости изучения чего-то еще, прежде чем вы сможете понять то с чего вы начинали.
 
-=== Learning Higher-Level Math
+Эта ((("Bitcoin", "overview of components")))((("elliptic curve cryptography", "role in Bitcoin")))((("signing and verification", "purpose of")))((("transactions", "role in Bitcoin"))) глава поможет вам понять с чего начать.
+Это может показаться странным, но мы начнем с базовой математики, которая необходима для понимания криптографии на эллиптических кривых.
+Криптография на эллиптической кривой, в свою очередь, дает нам алгоритмы подписи и проверки.
+Они лежат в основе работы транзакций, а транзакции являются атомарной единицей переноса стоимости в биткойнах.
+Узнав о конечных полях ((("finite fields", "role in Bitcoin")))((("elliptic curves", "role in Bitcoin"))) и в первую очередь об эллиптических кривых, вы получите точное представление о концепциях, которые вам понадобятся, чтобы прогрессировать логически.
 
-Learning about new mathematical structures can be a bit intimidating, and in this chapter, I hope to dispel the myth that high-level math is difficult.
-Finite fields, in particular, don't require all that much more in terms of prior mathematical knowledge than, say, algebra.
+Имейте в виду, что эта и следующие две главы могут показаться немного похожими на то, что вы едите овощи, особенно если вы долгое время не занимались формальной математикой.
+Я бы посоветовал вам пройти через них, поскольку представленные здесь концепции и код будут использоваться на протяжении всей книги.
 
-Think of finite fields as something that you could have learned instead of trigonometry, except that the education system you're a part of decided that trigonometry was more important for you to learn.
-This is my way of telling you that finite fields are not that hard to learn and require no more background than algebra.
+=== Learning Higher-Level Math/ Изучаем высшую математику
 
-This chapter is required if you want to understand elliptic curve cryptography.
-Elliptic curve cryptography is required for understanding signing and verification, which is at the heart of Bitcoin itself.
-As I've said, this chapter and the next two may feel a bit unrelated, but I encourage you to endure.
-The fundamentals here will not only make understanding Bitcoin a lot easier, but also make understanding Schnorr signatures, confidential transactions, and other leading-edge Bitcoin technologies easier.
+Изучение новых математических структур может быть немного пугающим, я надеюсь что в этой главе сумею развеять миф о том, что высшая математика сложна.
+Конечные поля, в частности, не требуют на много больше в плане глубоких математических знаний, чем, скажем, алгебра.
 
-=== Finite Field Definition
+Думайте о конечных полях, как о том, что вы бы могли изучать в школе, вместо тригонометрии, но система образования, частью которой вы являетесь, решила, что изучение тригонометрии более важно для вас.
+Таким образом я пытаюсь сказать вам, что конечные поля не так трудно изучить и для этого требуется не больше знаний, чем для изучения алгебры.
+
+Эта глава необходима, если вы хотите понять криптографию на эллиптической кривой.
+Криптография на эллиптической кривой необходима для понимания подписи и проверки, которые лежат в основе самого Bitcoin.
+
+=== Finite Field Definition/ Определение Конечного поля
 
 Mathematically,((("mathematical tools", "finite fields", id="MTfinite01")))((("finite fields", "definition of"))) a _finite field_ is defined as a finite set of numbers and two operations *+* (addition) and *⋅* (multiplication) that satisfy the following:
+
+Математически,((("mathematical tools", "finite fields", id="MTfinite01")))((("finite fields", "definition of"))) _конечное поле_ определяется как конечный набор чисел и два оператора *+* (сложение) и *⋅* (умножение), которые удовлетворяют следующим требованиям:
 
 1. If _a_ and _b_ are in the set, __a + b__ and __a__ ⋅ __b__ are in the set.
 We call this property _closed_.
