@@ -3,7 +3,6 @@
 == Finite Fields
 
 [.lead]
-Проверка
 One of the most difficult things about learning how to program Bitcoin is knowing where to start.
 There are so many components that depend on each other that learning one thing may lead you to have to learn another, which in turn may lead you to need to learn something else before you can understand the original thing.
 
