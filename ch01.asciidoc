@@ -34,9 +34,10 @@ Mathematically,((("mathematical tools", "finite fields", id="MTfinite01")))((("f
 
 Математически,((("mathematical tools", "finite fields", id="MTfinite01")))((("finite fields", "definition of"))) _конечное поле_ определяется как конечный набор чисел и два оператора *+* (сложение) и *⋅* (умножение), которые удовлетворяют следующим требованиям:
 
-1. If _a_ and _b_ are in the set, __a + b__ and __a__ ⋅ __b__ are in the set.
-We call this property _closed_.
+
+1. Если _a_ и _b_ включены в конечный набор чисел, __a + b__ и __a__ ⋅ __b__ также входят в этот ряд чисел. Это свойство называется _закрытым_.
 2. 0 exists and has the property __a__ + 0 = __a__. We call this the _additive identity_.
+2. 0 существует и __a__ + 0 = __a__. Это свойство называется
 3. 1 exists and has the property __a__ ⋅ 1 = __a__. We call this the _multiplicative identity_.
 4. If _a_ is in the set, __–a__ is in the set, which is defined as the value that makes __a__ + (–__a__) = 0.
 This((("additive inverse"))) is what we call the _additive inverse_.
